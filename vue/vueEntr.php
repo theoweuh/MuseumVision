@@ -1,87 +1,60 @@
-<?php
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=museumvision;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO:: ERRMODE_EXCEPTION));
-}
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-?>
+<h1 xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">Museum Vision</h1>
 
-
-<h1>Museum Vision</h1>
-
-<label for ="entr_texte">Nombre de place adulte </label>
-<input type="number" id="entr"
-       min="0" max="50"
-       </input>
-<br>
-<br>
-
-<label for ="entr_texte">Nombre de place enfant </label>
-<input type="number" id="entr"
-       min="0" max="50"
-
-<br>
-<br>
-<?php
-for ($i = 0; $i < count($listeExpos); $i++) {
-$listeExpos = getExpos($listeExpos[$i]['nom']);
-?>
 <p>Type d'exposition </p>
-<form action="/action_page.php">
+<form action="./?action=visite" method="post">
+
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-5 "><label for="tarif"><input type="checkbox" id="expo" name="expo" value="expo">
-                <label for="expo"><?php echo $listeExpos ?></label>
-                <br>
+        <div class="col-sm-5 "><h3>Expositions</h3>
 
-
-
-        </div>
-
-
-    </select>
-</form>
-<form>
-    <form action="" method="get">
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-1 "> </div>
-            <div class="col-sm-6 "><label for="tarif"><button type="submit">Valider l'enregistrement / calculer tarif et N° visite</button></label></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-1 "> </div>
-            <div class="col-sm-9 "><label for="tarif"><label>A partir de 50 personnes, vente/enregistrement des visites terminées</label></div>
-        </div>
-
-    </form>
-</form>
-
+        <?php
+        for ($i = 0; $i < count($listeExpos); $i++) {
+?>
+<input type="checkbox" id="expo<?php echo $listeExpos[$i]['ID']?>" name="expo<?php echo $listeExpos[$i]['ID']?>" value="expo">
+<label for="expo<?php echo $listeExpos[$i]['ID']?>"><?php echo $listeExpos[$i]['nom']?></label>
 <br>
-<br>
+<?php
+}
+?>
+            </select>
 
-
-
-
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-    <body>
-
-
-
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5 "> </div>
-        <div class="col-sm-2 "><label for="tarif">Tarif à payer : </label></div>
-        <div class="col-sm-3"><form action="">
+        <label> Nombre de place de place enfant</label>
 
-                <input type="text" id="tarif" name="tarif"><br><br></div>
+        <input name="nbenfant" type="number" id="number" value="0" ng-model="nbenfant">
+        <label> Nombre de place de place adulte</label>
+
+        <input name="nbadulte" type="number" id="number" value="0"ng-model="nbadulte">
+
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12 "><button name="valider" type="submit">Calculer le prix</button></div>
+
+        <input type="button" value="Valider" onclick="document.location.href='vue/ManageVisite.php';">
+
+
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-1 "> </div>
+        <div class="col-sm-9 "><label for="tarif"><label>A partir de 50 personnes, vente/enregistrement des visites terminées</label></div>
+    </div>
+</form>
+<br>
+<br>
+            <p><b>Total de(s) place(s) :
+                    <?php echo $nbPlace?> </b></p>
+            <p><b>Total du prix :
+                    <?php echo $prix ?> €</b></p>
+
+        </div>
+
+
+
 
 
 

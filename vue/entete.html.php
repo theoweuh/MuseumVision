@@ -2,44 +2,53 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <title><?php echo $titre ?></title>
-        <style type="text/css">
-            @import url("css/base.css");
-            @import url("css/form.css");
-            @import url("css/cgu.css");
-            @import url("css/corps.css");
-        </style>
+        <title> Museum Vision </title>
         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
     <nav>
-            
-            <ul id="menuGeneral">
-                <li><a href="./?action=accueil">Accueil</a></li> 
-                <li><a href="./?action=recherche"><img src="images/rechercher.png" alt="loupe" />Recherche</a></li>
-                <li></li> 
-                <li id="logo"><a href="./?action=accueil"><img src="images/logoBarre.png" alt="logo" /></a></li>
-                <li></li> 
-                <li><a href="./?action=cgu">CGU</a></li>
-                <li><a href="./?action=connexion"><img src="images/profil.png" alt="loupe" />Connexion</a></li>
-            </ul>
+        <head>
+            <style>
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    background-color: #333;
+                }
+
+                li {
+                    float: left;
+                }
+
+                li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                li a:hover {
+                    background-color: #111;
+                }
+            </style>
+        </head>
+        <body>
+
+        <ul>
+            <li><a class="active" href="controleur/Management.php">Création de visite</a></li>
+            <li><a href=>Management des visites</a></li>
+
+        </ul>
     </nav>
     <div id="bouton">
         <div></div>
         <div></div>
         <div></div>
     </div>
-    <ul id="menuContextuel">
-        <li><img src="images/logoBarre.png" alt="logo" /></li>
-        <?php if (isset($menuBurger)) { ?>
-            <?php for ($i = 0; $i < count($menuBurger); $i++) { ?>
-                <li>
-                    <a href="<?php echo $menuBurger[$i]['url']; ?>">
-                        <?php echo $menuBurger[$i]['label']; ?>
-                    </a>
-                </li>
-            <?php } ?>
-        <?php } ?>
-    </ul>
 
     <div id="corps">
